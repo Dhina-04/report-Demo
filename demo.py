@@ -1,10 +1,10 @@
 import streamlit as st
 import requests
 
-# Replace this with your actual n8n webhook URL
+# Replace with your actual n8n webhook URL
 N8N_WEBHOOK_URL = "https://dhina04.app.n8n.cloud/webhook-test/4e2f2db0-17d2-4b94-a22a-6938f42a3dd7"
 
-# Replace with your own user-password pairs
+# Replace with your actual username/password pairs
 VALID_USERS = {
     "admin": "password123",
     "john": "doe2024"
@@ -46,6 +46,7 @@ def action_form():
         action_item = st.text_area("Action Item")
         assigned_to = st.text_input("Assigned To")
         due_date = st.date_input("Due Date")
+        email_id = st.text_input("Email ID")  # <- New field
         submitted = st.form_submit_button("Submit")
 
         if submitted:
@@ -54,7 +55,8 @@ def action_form():
                 "meeting_date": str(meeting_date),
                 "action_item": action_item,
                 "assigned_to": assigned_to,
-                "due_date": str(due_date)
+                "due_date": str(due_date),
+                "email_id": email_id
             }
 
             try:
