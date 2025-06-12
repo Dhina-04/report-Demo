@@ -1,10 +1,10 @@
 import streamlit as st
 import requests
 
-# Replace with your actual n8n webhook URL
+# ✅ Your n8n webhook URL
 N8N_WEBHOOK_URL = "https://dhina04.app.n8n.cloud/webhook-test/4e2f2db0-17d2-4b94-a22a-6938f42a3dd7"
 
-# Replace with your actual username/password pairs
+# ✅ Dummy login credentials (customize as needed)
 VALID_USERS = {
     "admin": "password123",
     "john": "doe2024"
@@ -19,7 +19,6 @@ if "username" not in st.session_state:
 # --- Login function ---
 def login():
     st.title("🔐 Employee Login")
-
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
     login_clicked = st.button("Login")
@@ -36,7 +35,7 @@ def logout():
     st.session_state.authenticated = False
     st.session_state.username = ""
 
-# --- Action Item Submission Form ---
+# --- Action Item Form ---
 def action_form():
     st.title("📝 Submit Meeting Action Items")
     st.success(f"Welcome, **{st.session_state.username}**!")
@@ -46,7 +45,7 @@ def action_form():
         action_item = st.text_area("Action Item")
         assigned_to = st.text_input("Assigned To")
         due_date = st.date_input("Due Date")
-        email_id = st.text_input("Email ID")  # <- New field
+        email_id = st.text_input("Email ID")  # New Field
         submitted = st.form_submit_button("Submit")
 
         if submitted:
@@ -65,6 +64,7 @@ def action_form():
                     st.success("✅ Action item submitted successfully!")
                 else:
                     st.error(f"❌ Submission failed with status code {response.status_code}")
+                    st.code(response.text)
             except Exception as e:
                 st.error(f"❌ Error sending data: {e}")
 
