@@ -7,7 +7,7 @@ N8N_WEBHOOK_URL = "https://dhina04.app.n8n.cloud/webhook-test/4e2f2db0-17d2-4b94
 # Dummy user credentials
 VALID_USERS = {
     "admin": "password123",
-    "john": "doe2024"
+    "D": "1243"
 }
 
 # --- Session State ---
